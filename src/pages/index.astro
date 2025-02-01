@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import profile from "../assets/profile.jpg";
+import podcast from "../assets/craft-and-process.jpg";
 ---
 
 <html lang="en">
@@ -16,20 +18,51 @@ import "../styles/global.css";
     </head>
     <body>
         <div
-            class="max-w-sm bg-white min-h-screen mx-auto shado-lg py-20 flex flex-col"
+            class="max-w-sm bg-white min-h-screen mx-auto shado-lg py-20 flex flex-col font-humanist"
         >
-            <h1 class="text-xl font-semibold text-center mt-2">
+            <img class="mx-auto mb-4 max-w-60 rounded-full" src={profile.src} />
+            <h1 class="text-4xl font-semibold text-center mb-4">
                 Nicholas Young
             </h1>
-            <ul class="mt-10 space-y-3">
-                <li class="text-center">
-                    <a href="https://youtube.com/@secretfader">YouTube</a>
+            <ul class="mt-4 mb-16 space-y-3">
+                <li class="text-center mb-4">
+                    <a
+                        class="p-4 bg-gray-100 block outline-solid outline-gray-200 rounded"
+                        href="https://youtube.com/@secretfader">YouTube</a
+                    >
+                </li>
+                <li class="text-center mb-4">
+                    <a
+                        class="p-4 bg-gray-100 block outline-solid outline-gray-200 rounded"
+                        href="https://secretfader.com/">Website</a
+                    >
                 </li>
                 <li class="text-center">
-                    <a href="https://secretfader.com/">Website</a>
+                    <a
+                        class="p-4 bg-gray-100 block outline-solid outline-gray-200 rounded"
+                        href="mailto:hello@secretfader.com">Contact</a
+                    >
                 </li>
-                <li class="text-center">
-                    <a href="mailto:hello@secretfader.com">Contact</a>
+            </ul>
+            <img class="mx-auto max-w-80 mb-4" src={podcast.src} />
+            <h2 class="text-xl font-semibold text-center mb-4">
+                Craft and Process (an interview show)
+            </h2>
+            <ul class="mt-5 space-y-3">
+                <li class="text-center mb-4">
+                    <a
+                        class="p-4 bg-gray-100 block outline-solid outline-gray-200 rounded"
+                        href="https://www.youtube.com/playlist?list=PLEkOaEkMOS01232QuKxydzBECkToCdOoR"
+                        >Watch on YouTube</a
+                    >
+                </li>
+                <li class="text-center mb-4">
+                    <a
+                        class="p-4 bg-gray-100 block outline-solid outline-gray-200 rounded"
+                        href="https://open.spotify.com/show/6DSh0s3LEx6VBfIaemfNFp?si=F0Hyp1d0Su6XuJ0oA3emfw"
+                    >
+                        Listen on Spotify</a
+                    >
                 </li>
             </ul>
         </div>
