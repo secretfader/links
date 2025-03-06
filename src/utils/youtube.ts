@@ -6,50 +6,65 @@ const client = youtube.youtube("v3");
 export const channelId =
   process.env.YOUTUBE_CHANNEL_ID || "UCRg-cd0XZe9FMVr_3DKGXEw";
 
-export async function getRecentVideos(count, channelId) {
+export const podcastPlaylistId = "PLEkOaEkMOS01232QuKxydzBECkToCdOoR";
+
+export async function getRecentVideos(
+  channelId: string,
+  count: number | undefined,
+) {
   let results = [];
+  let maxResults = count || 50;
   let pageToken: string | undefined = undefined;
 
-  while (results.length < count) {
-    const {
-      data: { pageInfo, nextPageToken, items },
-    } = await client.search.list({
-      auth,
-      channelId,
-      pageToken,
-      part: "snippet",
-      order: "date",
-    });
+  const {
+    data: {
+      pageInfo: { totalResults },
+      items,
+      nextPageToken,
+    },
+  } = await client.search.list({
+    auth,
+    channelId,
+    maxResults,
+    pageToken,
+    part: "snippet",
+    order: "date",
+  });
 
-    if (pageInfo.totalResults > 0) {
-      results.concat(filterVideos(items));
-      pageToken = nextPageToken;
-    }
+  if (totalResults !== 0) {
+    results = results.concat(filterVideos(items));
+    pageToken = nextPageToken;
   }
 
   return results;
 }
 
-export async function getPlaylistVideos(playlistId) {
+export async function getPlaylistVideos(playlistId: string) {
   let results = [];
+  let pageToken: string | undefined = undefined;
 
   const {
-    data: { pageInfo, items },
+    data: {
+      pageInfo: { totalResults },
+      items,
+      nextPageToken,
+    },
   } = await client.playlistItems.list({
     auth,
     playlistId,
-    part: "id,snippet,status",
+    part: "id,snippet,status,contentDetails",
   });
 
-  if (pageInfo.totalResults > 0) {
-    results.concat(filterVideos(items));
+  if (totalResults !== 0) {
+    results = results.concat(items);
+    pageToken = nextPageToken;
   }
 
   return results;
 }
 
 function filterVideos(videos) {
-  videos.filter(
+  return videos.filter(
     (video) =>
       video &&
       video.snippet &&

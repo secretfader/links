@@ -1,0 +1,8 @@
+---
+import { podcastPlaylistId, getPlaylistVideos } from "../utils/youtube";
+import { YouTube } from "astro-embed";
+
+const video = (await getPlaylistVideos(podcastPlaylistId)).slice(0, 1)[0];
+---
+
+<YouTube id={video.contentDetails.videoId} posterQuality="high" />

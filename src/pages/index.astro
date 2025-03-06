@@ -2,7 +2,8 @@
 import "../styles/global.css";
 import profile from "../assets/profile.jpg";
 import podcast from "../assets/craft-and-process.jpg";
-import { YouTube } from "astro-embed";
+import Video from "../components/Video.astro";
+import Podcast from "../components/Podcast.astro";
 ---
 
 <html lang="en">
@@ -127,7 +128,7 @@ import { YouTube } from "astro-embed";
                 </li>
             </ul>
             <div class="mb-8">
-                <YouTube id="https://youtu.be/tRK1-PYRD-I" />
+                <Video />
             </div>
             <ul class="mb-6 space-y-3">
                 <li class="text-center mb-4">
@@ -173,7 +174,7 @@ import { YouTube } from "astro-embed";
                 </li>
             </ul>
             <div class="mt-5 mb-10">
-                <YouTube id="https://youtu.be/KpPj7xuiFKM" />
+                <Podcast />
             </div>
         </div>
     </body>
