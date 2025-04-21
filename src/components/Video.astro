@@ -2,7 +2,7 @@
 import { channelId, getRecentVideos } from "../utils/youtube";
 import { YouTube } from "astro-embed";
 
-const video = (await getRecentVideos(channelId, 5)).slice(0, 1)[0];
+const video = (await getRecentVideos(channelId, 10)).slice(0, 1)[0];
 ---
 
 <YouTube id={video.id.videoId} posterQuality="high" />
